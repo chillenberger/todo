@@ -1,38 +1,172 @@
+h1 {
+  font-size: 3em;
+}
+h2 {
+  margin: 0px;
+}
+body {
+}
+
+input {
+  border-bottom: 1px solid black;
+}
+
+button{
+  all: unset;
+}
+button:hover{
+  cursor: pointer;
+}
+a {
+  all: unset;
+}
+a:hover {
+  cursor: pointer;
+}
 .App {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.headContainer {
+  background: rgb(76,102,255);
+  background: linear-gradient(163deg, rgba(76,102,255,0.8) 85%, rgba(255,255,255,0) 85%);
+  padding: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em 0em;
+  padding: 1em;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.list{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex: 1;
+  min-width: 20em;
+  margin: 0em 1em 2em 1em;
+}
+
+.tableHeader {
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 0em 0em 1em 0em;
+}
+
+.tableRow {
+  display: flex;
+  flex-direction: row;
+  padding: 1em 0em;
+  background-color: white;
+  border-radius: .1em;
+  justify-content: space-around;
+}
+
+.tableRow:nth-child(odd){
+  background-color: rgba(76, 102, 255);
+  background-color: rgba(76, 102, 255, .8);
+}
+
+.tableRowItem {
+  display: flex;
+  flex: 4;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.tableRowDone {
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tableRowDelete {
+  flex: 1;
+}
+
+.tableRowEdit {
+  flex: 1;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(76,102,255,0.8);
+}
+
+.modalInner {
+  background-color: white;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.submitInput{
+  border-top: None;
+  border-right: None;
+  border-left: None;
+  height: 2em;
+  margin: 0em 1em 1em 1em;
+  font-size: 1.2em;
+  background-color: rgba(255,255,255,0);
+  color: black;
+}
+
+.submitInput::placeholder{
+  color: rgba(0,0,0,.5);
+}
+
+.submitInput:focus{
+  outline-width: 0;
+  border-bottom: 1px solid black;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  z-index: 1;
+}
+
+.button:after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+  opacity: .8;
+}
+
+.button:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .button {
+    padding: 13px 50px 13px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+.listButtonC8R {
+  padding: 2em 0em;
 }
