@@ -4,8 +4,6 @@ h1 {
 h2 {
   margin: 0px;
 }
-body {
-}
 
 input {
   border-bottom: 1px solid black;
@@ -107,7 +105,7 @@ a:hover {
   border-radius: 1em;
 }
 
-.submitInput{
+.toDoInput{
   border-top: None;
   border-right: None;
   border-left: None;
@@ -118,16 +116,16 @@ a:hover {
   color: black;
 }
 
-.submitInput::placeholder{
+.toDoInput::placeholder{
   color: rgba(0,0,0,.5);
 }
 
-.submitInput:focus{
+.toDoInput:focus{
   outline-width: 0;
   border-bottom: 1px solid black;
 }
 
-.button {
+.submitButton {
   font-size: 16px;
   font-weight: 200;
   letter-spacing: 1px;
@@ -143,7 +141,7 @@ a:hover {
   z-index: 1;
 }
 
-.button:after {
+.submitButton:after {
   content: "";
   background-color: #ffe54c;
   width: 100%;
@@ -156,17 +154,23 @@ a:hover {
   opacity: .8;
 }
 
-.button:hover:after {
+.submitButton:hover:after {
   top: 0px;
   left: 0px;
 }
 
 @media (min-width: 768px) {
-  .button {
+  .submitButton {
     padding: 13px 50px 13px;
   }
 }
 
 .listButtonC8R {
   padding: 2em 0em;
+}
+
+.toDoForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
