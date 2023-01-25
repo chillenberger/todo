@@ -21,6 +21,14 @@ function reducer(state, action) {
       items[markIndex].completed = true;
       return { toDoItems: [...items] };
     }
+    case 'markNotComplete': {
+      const items = [...state.toDoItems];
+      const markIndex = state.toDoItems.indexOf(
+        ...state.toDoItems.filter((i) => i.id === action.payload),
+      );
+      items[markIndex].completed = false;
+      return { toDoItems: [...items] };
+    }
     case 'editToDo': {
       const newTodoItems = [...state.toDoItems];
       const editIndex = state.toDoItems.indexOf(
@@ -38,23 +46,24 @@ function reducer(state, action) {
 export default function ToDoContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const value = useMemo(() => {
-    return {
-      toDoItems: state.toDoItems,
-      addToDo: (newValue) => {
-        dispatch({ type: 'addToDo', payload: { value: newValue, completed: false, id: _uniqueId() } });
-      },
-      deleteTodo: (id) => {
-        dispatch({ type: 'deleteToDo', payload: id });
-      },
-      makeComplete: (id) => {
-        dispatch({ type: 'markComplete', payload: id });
-      },
-      editToDo: (id, newValue) => {
-        dispatch({ type: 'editToDo', payload: { id: id, value: newValue } });
-      },
-    };
-  }, [state, dispatch]);
+  const value = useMemo(() => ({
+    toDoItems: state.toDoItems,
+    addToDo: (newValue) => {
+      dispatch({ type: 'addToDo', payload: { value: newValue, completed: false, id: _uniqueId() } });
+    },
+    deleteTodo: (id) => {
+      dispatch({ type: 'deleteToDo', payload: id });
+    },
+    markComplete: (id) => {
+      dispatch({ type: 'markComplete', payload: id });
+    },
+    markNotComplete: (id) => {
+      dispatch({ type: 'markNotComplete', payload: id });
+    },
+    editToDo: (id, newValue) => {
+      dispatch({ type: 'editToDo', payload: { id, value: newValue } });
+    },
+  }), [state, dispatch]);
 
   return (
     <ToDoContext.Provider value={value}>

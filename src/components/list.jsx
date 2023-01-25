@@ -16,9 +16,9 @@ export default function ItemList({
       {items?.length
         ? (
           <ul>
-            {items.map((item, i) => (
+            {items.map((item) => (
               <Item
-                key={i}
+                key={item.id}
                 type={type}
                 item={item}
               />

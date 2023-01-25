@@ -28,7 +28,7 @@ export default function App() {
           title="Completed Items"
           link="https://www.youtube.com/watch?v=btPJPFnesV4"
           items={toDoItems.filter((item) => item.completed)}
-          type="complete"
+          type="Complete"
           message="You Have Done Nothing"
         />
       </div>

@@ -6,12 +6,21 @@ import ItemEditModal from './modal';
 
 export default function Item({ item, type }) {
   const [showEditModal, changeShowEditModal] = useState(false);
-  const { deleteTodo, makeComplete, editToDo } = useContext(ToDoContext);
+  const {
+    deleteTodo,
+    markComplete,
+    markNotComplete,
+    editToDo,
+  } = useContext(ToDoContext);
 
   const handleChecked = (e) => {
     setTimeout(() => {
       e.target.checked = false;
-      makeComplete(item.id);
+      if (type === 'ToDo') {
+        markComplete(item.id);
+      } else {
+        markNotComplete(item.id);
+      }
     }, 200);
   };
 
@@ -35,7 +44,10 @@ export default function Item({ item, type }) {
       {type === 'ToDo'
         && (
         <div className="tableRowEdit">
-          <button onClick={handleEdit}>
+          <button
+            onClick={handleEdit}
+            type="submit"
+          >
             <FontAwesomeIcon icon={faEdit} />
           </button>
         </div>
@@ -43,16 +55,15 @@ export default function Item({ item, type }) {
       <div className="tableRowItem">
         {item.value}
       </div>
-      {type === 'ToDo'
-        && (
-        <div>
-          <input type="checkbox" onClick={(e) => handleChecked(e)} />
-        </div>
-        )}
+      <div>
+        <input type="checkbox" onClick={(e) => handleChecked(e)} />
+      </div>
       <div className="tableRowDelete">
-        <button onClick={() => {
-          deleteTodo(item.id);
-        }}
+        <button
+          onClick={() => {
+            deleteTodo(item.id);
+          }}
+          type="submit"
         >
           <FontAwesomeIcon icon={faTrash} />
         </button>

@@ -1,15 +1,15 @@
 import React from 'react';
 import TextForm from './form';
 
-export default function ItemEditModal(props) {
+export default function ItemEditModal({ submitAction, cancelEdit }) {
   return (
     <div className="modal">
       <div className="modalInner">
         <p>Edit ToDo Item</p>
         <TextForm
-          submitAction={props.submitAction}
+          submitAction={submitAction}
         >
-          <button onClick={props.cancelEdit} className="button">Cancel</button>
+          <button onClick={cancelEdit} className="button" type="button">Cancel</button>
         </TextForm>
       </div>
     </div>
