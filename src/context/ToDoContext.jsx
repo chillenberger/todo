@@ -37,6 +37,14 @@ function reducer(state, action) {
       newTodoItems[editIndex].value = action.payload.value;
       return { toDoItems: [...newTodoItems] };
     }
+    case 'editNote': {
+      const items = [...state.toDoItems];
+      const markIndex = state.toDoItems.indexOf(
+        ...state.toDoItems.filter((i) => i.id === action.payload.id),
+      );
+      items[markIndex].note = action.payload.note;
+      return { toDoItems: [...items] };
+    }
     default: {
       return state;
     }
@@ -48,8 +56,16 @@ export default function ToDoContextProvider({ children }) {
 
   const value = useMemo(() => ({
     toDoItems: state.toDoItems,
-    addToDo: (newValue) => {
-      dispatch({ type: 'addToDo', payload: { value: newValue, completed: false, id: _uniqueId() } });
+    addToDo: (newValue, newNote) => {
+      dispatch({
+        type: 'addToDo',
+        payload: {
+          value: newValue,
+          completed: false,
+          id: _uniqueId(),
+          note: newNote || 'None',
+        },
+      });
     },
     deleteTodo: (id) => {
       dispatch({ type: 'deleteToDo', payload: id });
@@ -59,6 +75,9 @@ export default function ToDoContextProvider({ children }) {
     },
     markNotComplete: (id) => {
       dispatch({ type: 'markNotComplete', payload: id });
+    },
+    editNote: (id, newNote) => {
+      dispatch({ type: 'editNote', payload: { id, note: newNote } });
     },
     editToDo: (id, newValue) => {
       dispatch({ type: 'editToDo', payload: { id, value: newValue } });

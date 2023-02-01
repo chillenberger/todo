@@ -21,14 +21,12 @@ export default function App() {
           title="ToDo Items"
           link="https://www.youtube.com/watch?v=DEGs-J5nfqQ"
           items={toDoItems.filter((item) => !item.completed)}
-          type="ToDo"
           message="You Have Nothing To Do"
         />
         <ItemList
           title="Completed Items"
           link="https://www.youtube.com/watch?v=btPJPFnesV4"
           items={toDoItems.filter((item) => item.completed)}
-          type="Complete"
           message="You Have Done Nothing"
         />
       </div>

@@ -7,7 +7,6 @@ export default function ItemList({
   title,
   link,
   items,
-  type,
   message,
 }) {
   return (
@@ -19,7 +18,6 @@ export default function ItemList({
             {items.map((item) => (
               <Item
                 key={item.id}
-                type={type}
                 item={item}
               />
             ))}
